@@ -1,6 +1,14 @@
-<li [class.red]="isTripInPast()">
-    <a [routerLink]="getTripLink()">{{ trip().name }}</a> 
-    | {{ trip().description }}
-    | {{ trip().date | date }}
-    <button (click)="showDate(trip())">Tell me the date</button>
+<li class="trip-card">
+    <div class="trip-info">
+        <a class="trip-name" [routerLink]="getTripLink()">{{ trip().name }}</a>
+        @if (trip().description) {
+            <span class="trip-meta">{{ trip().description }}</span>
+        }
+        <span class="trip-meta">{{ trip().date | date: 'dd.MM.yyyy' }}</span>
+    </div>
+
+    <div class="trip-actions">
+        <button class="outline" (click)="showDate(trip())">Tell me the date</button>
+        <button class="delete" (click)="deleteTrip()">Delete</button>
+    </div>
 </li>

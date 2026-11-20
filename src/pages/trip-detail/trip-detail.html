@@ -1,6 +1,15 @@
-<h1>Trip Detail</h1>
-<p>Trip ID: {{ tripId }}</p>
+@if (trip(); as t) {
+    <h1>{{ t.name }}</h1>
 
-@if(gps()) {
-    <p>GPS: {{ gps()?.longitude}}, {{ gps()?.latitude }}</p>
+    <nav class="tabs">
+        <a routerLink="info" routerLinkActive="active">Info</a>
+        <a routerLink="weather" routerLinkActive="active">Weather</a>
+    </nav>
+
+    <router-outlet />
+} @else {
+    <h1>Trip not found</h1>
+    <p>No trip with ID {{ id() }}.</p>
 }
+
+<a routerLink="/">← Back</a>

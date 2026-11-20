@@ -1,3 +1,46 @@
-.red {
-    color: red;
+.trip-card {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  background: var(--pico-card-background-color);
+}
+
+.trip-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.trip-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.trip-meta {
+  color: var(--pico-muted-color);
+  font-size: 0.9rem;
+}
+
+.trip-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.trip-actions button {
+  margin: 0;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.trip-actions .delete {
+  background: #c62828;
+  border-color: #c62828;
+  color: #fff;
 }

@@ -1,6 +1,6 @@
 <h2>Trip List</h2>
 <ul>
-    @for (trip of trips; track trip.name) {
+    @for (trip of trips(); track trip.id) {
         <app-trip-list-item [trip]="trip" (onShowDate)="onShowDate()" />
     } @empty {
         <li>There are no trips.</li>

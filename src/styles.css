@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@picocss/pico/css/pico.min.css";
+
+form span {
+  display: block;
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+  color: #c62828;
+  font-size: 0.875rem;
+}
+
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}

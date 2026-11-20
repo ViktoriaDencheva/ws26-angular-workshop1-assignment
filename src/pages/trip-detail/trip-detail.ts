@@ -1,30 +1,18 @@
-import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, computed, inject, input, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+//import { ActivatedRoute } from '@angular/router';
 import { Trip, TripService } from '../../services/trip-service';
-import { GpsLocation, WeatherServiceTs } from '../../services/weather-service.ts';
+//import { GpsLocation, WeatherServiceTs } from '../../services/weather-service.ts';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'page-trip-detail',
     templateUrl: './trip-detail.html',
     styleUrl: './trip-detail.css',
-    imports: [],
+    imports: [DatePipe, RouterLink, RouterLinkActive, RouterOutlet],
 })
-export class TripDetailPage implements OnInit {
-    tripService = inject(TripService);
-    weatherService = inject(WeatherServiceTs);
-    private activatedRoute = inject(ActivatedRoute);
-    trip: WritableSignal<Trip | undefined> = signal(undefined);
-    gps: WritableSignal<GpsLocation | undefined> = signal(undefined);
-    tripId = -1;
-
-    ngOnInit() {
-        this.activatedRoute.params.subscribe((params) => {
-            this.tripId = Number(params['id'] ?? -1);
-            this.trip.set(this.tripService.getTrip(this.tripId));
-            this.weatherService.getGpsCoordinates(this.trip.name)
-                .subscribe((nextLocation) => {
-                    this.gps.set(nextLocation.results[0]);
-                })
-        })
+export class TripDetailPage {
+    private tripService = inject(TripService);
+    id = input.required<string>();
+    trip = computed(() => this.tripService.getTrip(Number(this.id())));
     }
-}

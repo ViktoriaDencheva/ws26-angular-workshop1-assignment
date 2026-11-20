@@ -9,9 +9,19 @@
 
 <label for="tripForm-description">Description</label>
 <input id="tripForm-description" type="text" [formField]="tripForm.description" />
+@if(tripForm.description().invalid()) {
+    @for (error of tripForm.description().errors(); track error.kind) {
+      <span>{{ error.message }}</span>
+    }
+}
 
 <label for="tripForm-date">Date</label>
-<input id="tripForm-date" type="text" [formField]="tripForm.date" />
+<input id="tripForm-date" type="date" [formField]="tripForm.date" />
+@if(tripForm.date().invalid()) {
+    @for (error of tripForm.date().errors(); track error.kind) {
+      <span>{{ error.message }}</span>
+    }
+}
 <button type="submit">Submit</button>
 </form>
 

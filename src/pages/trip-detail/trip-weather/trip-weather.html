@@ -1,0 +1,6 @@
+@if (gps(); as g) {
+    <p>{{ g.name }}: {{ g.latitude }}, {{ g.longitude }}</p>
+    
+} @else {
+    <p>Loading location…</p>
+}
